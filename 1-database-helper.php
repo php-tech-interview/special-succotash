@@ -1,8 +1,22 @@
 <?php
 
+/*
+ * Предположим, что мы не работаем с каким-то популярным фреймворком (Laravel, Symfony, Yii, etc.), но у нас
+ * есть какая-то реализация Service Container, роутинга и т.д.
+ * Работа с SQL осуществляется через какую-то прослойку над PDO.
+ * 
+ * Задача: необходимо реализовать эндпоинт (на PHP 7+) для создания пользователя в базе данных.
+ *
+ * Input: login, password
+ * Output: user object / error
+ */
+
 declare(strict_types=1);
 
-final class DatabaseHelper
+/*
+ * File src/Helpers/DatabaseHelper.php
+ */
+class DatabaseHelper
 {
     private static $connection;
 
@@ -57,7 +71,10 @@ final class DatabaseHelper
     }
 }
 
-final class UserController
+/*
+ * File src/Controllers/UserController.php
+ */
+class UserController
 {
     public function createAction(Request $request)
     {
